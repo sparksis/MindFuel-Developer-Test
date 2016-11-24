@@ -2,17 +2,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Canvis Drawing!</title>
+<title>Canvas Drawing!</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <base href="/index.html">
-<!-- Angular Material style sheet -->
 <link rel="stylesheet" href="wro/thirdparty.css">
 
-<script type="text/javascript" src="wro/thirdparty.js" defer></script>
+<script type="text/javascript" src="wro/thirdparty.js"></script>
 <script type="text/javascript" src="wro/app.js" defer></script>
 </head>
-<body ng-app="moviesApp" ng-controller="MoviesController as $ctrl"
-	ng-cloak>
-
+<body ng-app="drawingApp" ng-controller="AppController" ng-cloak>
+	<canvas id="drawing" width="800" height="600"></canvas>
+	<script type="text/javascript" defer>
+		$(function() {
+			$('#drawing').sketch();
+		});
+	</script>
 </body>
 </html>
