@@ -23,19 +23,33 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import ro.isdc.wro.http.WroFilter;
+
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan
-public class SampleTomcatApplication {
+public class Application {
 
-	private static Log logger = LogFactory.getLog(SampleTomcatApplication.class);
+	private static Log logger = LogFactory.getLog(Application.class);
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(SampleTomcatApplication.class, args);
+		SpringApplication.run(Application.class, args);
+	}
+
+	@Bean
+	public FilterRegistrationBean wroRegistration() {
+		FilterRegistrationBean registration = new FilterRegistrationBean();
+		
+		registration.setName("WebResourceOptimizer");
+
+		registration.setFilter(new WroFilter());
+		registration.addUrlPatterns("/wro/*");
+		return registration;
 	}
 
 	@Bean
