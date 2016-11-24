@@ -47,9 +47,16 @@
 	<group name="app">
 		<css>/resouces/css/app.css</css>
 		<js>/resources/js/app.js</js>
-		<group-ref>services</group-ref>
 
+		<group-ref>toolbar</group-ref>
+
+		<group-ref>services</group-ref>
 		<js>/resources/js/init.js</js>
+	</group>
+
+	<group name="toolbar">
+		<js>/resources/js/toolbar/toolbar.module.js</js>
+		<js>/resources/js/toolbar/toolbar.component.js</js>
 	</group>
 
 	<group name="services">
