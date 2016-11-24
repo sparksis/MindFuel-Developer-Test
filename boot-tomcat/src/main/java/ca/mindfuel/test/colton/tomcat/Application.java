@@ -41,10 +41,19 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
+	/**
+	 * WebResourceOptimizer handles combining of the many js files required for
+	 * a modern webapp into a few bundles. These bundles are declaratively built
+	 * in order to improve code re-use.  
+	 * 
+	 * See Also WEB-INF/wro.properties
+	 * 
+	 * @return
+	 */
 	@Bean
 	public FilterRegistrationBean wroRegistration() {
 		FilterRegistrationBean registration = new FilterRegistrationBean();
-		
+
 		registration.setName("WebResourceOptimizer");
 
 		registration.setFilter(new WroFilter());
