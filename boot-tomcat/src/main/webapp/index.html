@@ -6,16 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <base href="/index.html">
 <link rel="stylesheet" href="wro/thirdparty.css">
+<link rel="stylesheet" href="resources/css/app.css">
 
-<script type="text/javascript" src="wro/thirdparty.js"></script>
+<script type="text/javascript" src="wro/thirdparty.js" defer></script>
 <script type="text/javascript" src="wro/app.js" defer></script>
 </head>
-<body ng-app="drawingApp" ng-controller="AppController" ng-cloak>
+<body ng-app="drawingApp" ng-controller="AppController" ng-cloak md-colors="{color:'primary'}">
+	<h1 class="md-primary">Canvas Drawing!</h1>
+	
+	<toolbar/>
 	<canvas id="drawing" width="800" height="600"></canvas>
-	<script type="text/javascript" defer>
-		$(function() {
-			$('#drawing').sketch();
-		});
-	</script>
 </body>
 </html>
