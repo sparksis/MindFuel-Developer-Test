@@ -16,6 +16,10 @@
 
 package ca.mindfuel.test.colton.tomcat;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
@@ -28,7 +32,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import ro.isdc.wro.http.WroFilter;
+import ro.isdc.wro.http.ConfigurableWroFilter;
 
 @Configuration
 @EnableAutoConfiguration
@@ -44,7 +48,7 @@ public class Application {
 	/**
 	 * WebResourceOptimizer handles combining of the many js files required for
 	 * a modern webapp into a few bundles. These bundles are declaratively built
-	 * in order to improve code re-use.  
+	 * in order to improve code re-use.
 	 * 
 	 * See Also WEB-INF/wro.properties
 	 * 
@@ -56,7 +60,21 @@ public class Application {
 
 		registration.setName("WebResourceOptimizer");
 
-		registration.setFilter(new WroFilter());
+		ConfigurableWroFilter filter = new ConfigurableWroFilter();
+
+		try (InputStream in = Application.class.getResourceAsStream("/wro.properties")) {
+			Properties props = new Properties();
+			props.load(in);
+			in.close();
+			filter.setProperties(props);
+		} catch (IOException io) {
+			/**
+			 * will cause the startup to crash (hard fail)
+			 */
+			throw new RuntimeException(io);
+		}
+
+		registration.setFilter(filter);
 		registration.addUrlPatterns("/wro/*");
 		return registration;
 	}
