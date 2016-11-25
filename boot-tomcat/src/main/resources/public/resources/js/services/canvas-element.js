@@ -1,10 +1,19 @@
 /**
- * Gives angular a injectable reference to the page's Canvas
+ * Gives angular a injectable reference to the page's Canvas.
+ * 
+ * This factory-service abuses the angular lifecycle a bit and incorrectly
+ * modifies the dom. The result is we have a fairly clean wrapper which can be
+ * used to control sketch.js
  */
 angular.module('drawingApp').factory('Canvas', function() {
+
+	$(function() {
+		sk = $('#drawing').sketch();
+	});
+
 	var el = document.getElementById("drawing");
-	Object.defineProperty(el,'sketch',{
-		get: function(){
+	Object.defineProperty(el, 'sketch', {
+		get : function() {
 			return $('#drawing').data('sketch');
 		}
 	});
@@ -22,7 +31,7 @@ angular.module('drawingApp').factory('Canvas', function() {
 		el.sketch.actions.push(redo.pop());
 		redraw();
 	};
-	el.clear = function(){
+	el.clear = function() {
 		el.sketch.actions = [];
 		redraw();
 	}

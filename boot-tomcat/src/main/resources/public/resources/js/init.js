@@ -3,10 +3,6 @@
  * AFTER all other libraries are loaded but but typically before angular has
  * bootstrapped the page.
  */
-$(function() {
-	sk = $('#drawing').sketch();
-});
-
 var loadDeferredStyles = function() {
     var addStylesNode = document.getElementById("deferred-styles");
     var replacement = document.createElement("div");

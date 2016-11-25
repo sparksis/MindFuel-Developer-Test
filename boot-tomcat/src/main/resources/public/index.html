@@ -11,7 +11,7 @@
 <script type="text/javascript" src="wro/thirdparty.js" defer></script>
 <script type="text/javascript" src="wro/app.js" defer></script>
 </head>
-<body ng-app="drawingApp" ng-controller="AppController" ng-cloak
+<body ng-app="drawingApp" ng-controller="AppController as app" ng-cloak
 	md-colors="{color:'primary'}">
 	<noscript id="deferred-styles">
 		<link rel="stylesheet"
@@ -19,10 +19,7 @@
 			integrity="sha384-dNpIIXE8U05kAbPhy3G1cz+yZmTzA6CY8Vg/u2L9xRnHjJiAK76m2BIEaSEV+/aU"
 			crossorigin="anonymous">
 	</noscript>
-	<header>
-		<h1 class="md-primary">Canvas Drawing!</h1>
-		<toolbar></toolbar>
-	</header>
-	<canvas id="drawing" width="1920" height="1920"></canvas>
+	<canvas-ui ng-show="app.s.authenticated"></canvas-ui>
+	<authenticate-ui ng-hide="app.s.authenticated"></authenticate-ui>
 </body>
 </html>

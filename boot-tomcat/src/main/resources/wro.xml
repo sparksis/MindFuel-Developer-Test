@@ -10,8 +10,7 @@
 
 		<group-ref>fonts</group-ref>
 
-		<js>https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js
-		</js>
+		<js>https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.js </js>
 		<group-ref>angularjs</group-ref>
 		<group-ref>sketchjs</group-ref>
 	</group>
@@ -21,23 +20,15 @@
 	</group>
 
 	<group name="angularjs">
-		<js>https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js
-		</js>
-		<js>https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js
-		</js>
-		<js>https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-resource.min.js
-		</js>
-		<js>https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js
-		</js>
-		<js>https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js
-		</js>
-		<js>https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js
-		</js>
+		<js>https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js </js>
+		<js>https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js </js>
+		<js>https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-resource.js </js>
+		<js>https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js </js>
+		<js>https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.js </js>
+		<js>https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.js </js>
 
-		<css>https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.css
-		</css>
-		<js>https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.js
-		</js>
+		<css>https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.css </css>
+		<js>https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.js </js>
 	</group>
 
 	<group name="sketchjs">
@@ -45,10 +36,10 @@
 	</group>
 
 	<group name="app">
-		<css>/resouces/css/app.css</css>
 		<js>/resources/js/app.js</js>
+		<css>/resouces/css/app.css</css>
 
-		<group-ref>toolbar</group-ref>
+		<group-ref>canvas-ui</group-ref>
 
 		<group-ref>services</group-ref>
 		<js>/resources/js/init.js</js>
@@ -57,6 +48,12 @@
 	<group name="toolbar">
 		<js>/resources/js/toolbar/toolbar.module.js</js>
 		<js>/resources/js/toolbar/toolbar.component.js</js>
+	</group>
+
+	<group name="canvas-ui">
+		<js>/resources/js/canvas-ui/canvas-ui.module.js</js>
+		<js>/resources/js/canvas-ui/canvas-ui.component.js</js>
+		<group-ref>toolbar</group-ref>
 	</group>
 
 	<group name="services">

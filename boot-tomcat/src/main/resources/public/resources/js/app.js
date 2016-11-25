@@ -1,4 +1,4 @@
-angular.module('drawingApp', [ 'ngResource', 'ngRoute', 'ngMaterial' , 'toolbar' ]);
+angular.module('drawingApp', [ 'ngResource', 'ngRoute', 'ngMaterial' , 'canvasUi' ]);
 
 angular.module('drawingApp').config(
 		function($mdThemingProvider) {
@@ -6,7 +6,7 @@ angular.module('drawingApp').config(
 					.backgroundPalette('blue-grey');
 		});
 
-angular.module('drawingApp').controller('AppController', function(Canvas,Session) {
+angular.module('drawingApp').controller('AppController', function(Session) {
 	var $self = this;
 	$self.s=Session.query();
 });
