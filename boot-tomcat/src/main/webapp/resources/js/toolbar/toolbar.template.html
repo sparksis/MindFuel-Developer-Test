@@ -1,3 +1,8 @@
 <div id="toolbar">
+	<a ng-click="save" ><i style="font-size: 2em;" class="fa fa-floppy-o" aria-hidden="true"></i></a>
+	<a ng-click="load"><i style="font-size: 2em;" class="fa fa-folder-open-o" aria-hidden="true"></i></a>
+	<a ng-click="undo"><i style="font-size: 2em;" class="fa fa-undo" aria-hidden="true"></i></a>
+	<a ng-click="redo"><i style="font-size: 2em;" class="fa fa-repeat" aria-hidden="true"></i></a>
+	<br />
 	<a ng-repeat="color in toolbar.colors" href="#drawing" data-color="{{color}}" style="background: {{color}};"></a>
 </div>

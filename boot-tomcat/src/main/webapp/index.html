@@ -11,10 +11,18 @@
 <script type="text/javascript" src="wro/thirdparty.js" defer></script>
 <script type="text/javascript" src="wro/app.js" defer></script>
 </head>
-<body ng-app="drawingApp" ng-controller="AppController" ng-cloak md-colors="{color:'primary'}">
-	<h1 class="md-primary">Canvas Drawing!</h1>
-	
-	<toolbar></toolbar>
-	<canvas id="drawing" width="800" height="600"></canvas>
+<body ng-app="drawingApp" ng-controller="AppController" ng-cloak
+	md-colors="{color:'primary'}">
+	<noscript id="deferred-styles">
+		<link rel="stylesheet"
+			href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css"
+			integrity="sha384-dNpIIXE8U05kAbPhy3G1cz+yZmTzA6CY8Vg/u2L9xRnHjJiAK76m2BIEaSEV+/aU"
+			crossorigin="anonymous">
+	</noscript>
+	<header>
+		<h1 class="md-primary">Canvas Drawing!</h1>
+		<toolbar></toolbar>
+	</header>
+	<canvas id="drawing" width="1920" height="720"></canvas>
 </body>
 </html>
