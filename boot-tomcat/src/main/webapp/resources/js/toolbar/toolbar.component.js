@@ -8,5 +8,6 @@ angular.module('toolbar').component('toolbar', {
 						'Teal', 'Blue', 'Navy', 'Fuchsia', 'Purple' ];
 		$self.undo=Canvas.undo;
 		$self.redo=Canvas.redo;
+		$self.clear=Canvas.clear;
 	}
 });

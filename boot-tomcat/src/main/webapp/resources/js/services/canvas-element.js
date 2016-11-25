@@ -18,5 +18,9 @@ angular.module('drawingApp').factory('Canvas', function() {
 		sketch.actions.push(redo.pop());
 		redraw();
 	};
+	el.clear = function(){
+		sketch.actions = [];
+		sketch.redraw();
+	}
 	return el;
 });
