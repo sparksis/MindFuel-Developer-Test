@@ -1,5 +1,16 @@
+body{
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
 header {
-	height: 260px;
+	height: 131px;
+}
+
+canvas{
+	overflow: hidden;
+	background-color: white;
 }
 
 h1 {
