@@ -38,9 +38,10 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import ca.mindfuel.test.colton.Application;
+import ca.mindfuel.test.colton.service.HelloWorldService;
 import ca.mindfuel.test.colton.tomcat.NonAutoConfigurationSampleTomcatApplicationTests.NonAutoConfigurationSampleTomcatApplication;
-import ca.mindfuel.test.colton.tomcat.service.HelloWorldService;
-import ca.mindfuel.test.colton.tomcat.web.SampleController;
+import ca.mindfuel.test.colton.web.SampleController;
 
 import static org.junit.Assert.assertEquals;
 

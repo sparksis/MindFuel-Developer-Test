@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package ca.mindfuel.test.colton.tomcat;
+package ca.mindfuel.test.colton;
 
 import java.io.IOException;
 import java.io.InputStream;

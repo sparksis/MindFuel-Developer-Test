@@ -1,11 +1,11 @@
-package ca.mindfuel.test.colton.tomcat.web;
+package ca.mindfuel.test.colton.web;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import ca.mindfuel.test.colton.tomcat.model.UserSession;
+import ca.mindfuel.test.colton.model.UserSession;
 
 @RestController
 public class SessionResource {

@@ -1,4 +1,4 @@
-package ca.mindfuel.test.colton.tomcat.model;
+package ca.mindfuel.test.colton.model;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.Authentication;
