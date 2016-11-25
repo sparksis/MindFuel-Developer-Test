@@ -1,17 +1,16 @@
 package ca.mindfuel.test.colton.model;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.context.WebApplicationContext;
 
 /**
- * An interchange object for passing session data between client/server 
- * Security properties are read-only
+ * An interchange object for passing session data between client/server Security
+ * properties are read-only
+ * 
  * @author colton
  *
  */
-@Scope(WebApplicationContext.SCOPE_SESSION)
 public class UserSession {
 
 	Authentication auth;
@@ -30,7 +29,11 @@ public class UserSession {
 	}
 
 	public boolean isAuthenticated() {
-		return auth.getAuthorities().stream().anyMatch(it -> "USER".equals(it));
+		for (GrantedAuthority a : auth.getAuthorities()) {
+			if (a.getAuthority().equals("ROLE_USER"))
+				return true;
+		}
+		return false;
 	}
 
 }

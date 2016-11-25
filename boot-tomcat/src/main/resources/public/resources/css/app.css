@@ -29,3 +29,12 @@ h1 {
 	height: 2em;
 	width: 2em;
 }
+
+#loginForm{
+	width: 250px;
+	height:250px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top: 20vh;
+	margin-bottom:auto;
+}

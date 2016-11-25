@@ -13,7 +13,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().anyRequest().anonymous();
+		http.authorizeRequests().anyRequest().permitAll();
+		http.formLogin().loginPage("/").loginProcessingUrl("/login");
 	}
 
 	@Autowired

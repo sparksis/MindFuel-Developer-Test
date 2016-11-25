@@ -1,0 +1,24 @@
+<div id="loginForm">
+	<form name="loginForm" action="/login" method="POST">
+		<div layout="column">
+			<md-input-container >
+				<label>User Name</label>
+				<input required name="username" ng-model="auth.credentials.username">
+				<div ng-messages="loginForm.username.$error">
+					<div ng-message="required">This is required.</div>
+				</div>
+			</md-input-container>
+			<md-input-container >
+				<label>password</label>
+				<input required type="password" name="password" ng-model="auth.credentials.password">
+				<div ng-messages="loginForm.password.$error">
+					<div ng-message="required">This is required.</div>
+				</div>
+			</md-input-container>
+			<input type="hidden" name="_csrf" value="{{auth.csrfToken}}" />
+			<md-input-container>
+				<md-button class="md-primary" type="submit">Login</md-button>
+			</md-input-container>
+		</div>
+	</form>
+</div>

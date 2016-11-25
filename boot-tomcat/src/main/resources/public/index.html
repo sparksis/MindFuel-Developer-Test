@@ -4,12 +4,15 @@
 <meta charset="UTF-8">
 <title>Canvas Drawing!</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<base href="/index.html">
+<base href="/">
 <link rel="stylesheet" href="wro/thirdparty.css">
 <link rel="stylesheet" href="resources/css/app.css">
 
 <script type="text/javascript" src="wro/thirdparty.js" defer></script>
 <script type="text/javascript" src="wro/app.js" defer></script>
+
+<script type="text/javascript" src="csrf-token.js"></script>
+
 </head>
 <body ng-app="drawingApp" ng-controller="AppController as app" ng-cloak
 	md-colors="{color:'primary'}">
@@ -20,6 +23,6 @@
 			crossorigin="anonymous">
 	</noscript>
 	<canvas-ui ng-show="app.s.authenticated"></canvas-ui>
-	<authenticate-ui ng-hide="app.s.authenticated"></authenticate-ui>
+	<authentication-ui ng-hide="app.s.authenticated"></authentication-ui>
 </body>
 </html>

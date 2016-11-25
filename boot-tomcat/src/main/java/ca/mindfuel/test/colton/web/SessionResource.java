@@ -15,7 +15,6 @@ public class SessionResource {
 	 * @param session
 	 * @return
 	 */
-	// TODO this should probably be a model
 	@ResponseBody
 	@RequestMapping(value = "rest/session", produces = MediaType.APPLICATION_JSON_VALUE)
 	public UserSession getSession(UserSession session) {
