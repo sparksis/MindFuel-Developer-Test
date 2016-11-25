@@ -24,7 +24,7 @@ h1 {
 	font-family: 'Delius Unicase', cursive;
 }
 
-#toolbar>a {
+#toolbar>a , #toolbar>span {
 	display: inline-block;
 	height: 2em;
 	width: 2em;

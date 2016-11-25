@@ -6,6 +6,9 @@ angular.module('drawingApp').config(
 					.backgroundPalette('blue-grey');
 		});
 
-angular.module('drawingApp').controller('AppController', function(Canvas) {
-
+angular.module('drawingApp').controller('CanvasController', function(Canvas) {
+	$self = this;
+	$self.push = Canvas.push;
 });
+
+angular.module('drawingApp').controller('AppController', function(Canvas) { });

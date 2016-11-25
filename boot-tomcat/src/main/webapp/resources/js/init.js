@@ -4,7 +4,7 @@
  * bootstrapped the page.
  */
 $(function() {
-	$('#drawing').sketch();
+	sk = $('#drawing').sketch();
 });
 
 var loadDeferredStyles = function() {
