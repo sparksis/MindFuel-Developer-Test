@@ -61,5 +61,6 @@
 
 	<group name="services">
 		<js>/resources/js/services/canvas-element.js</js>
+		<js>/resources/js/services/session-resource.js</js>
 	</group>
 </groups>

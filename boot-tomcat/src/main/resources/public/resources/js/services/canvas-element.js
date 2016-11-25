@@ -18,13 +18,13 @@ angular.module('drawingApp').factory('Canvas', function() {
 	};
 	el.redo = function() {
 		// TODO validate redo (check to see if the stack has changed, if so do
-		// not go permit redoing)
+		// not permit redoing)
 		el.sketch.actions.push(redo.pop());
 		redraw();
 	};
 	el.clear = function(){
 		el.sketch.actions = [];
-		el.sketch.redraw();
+		redraw();
 	}
 	return el;
 });
