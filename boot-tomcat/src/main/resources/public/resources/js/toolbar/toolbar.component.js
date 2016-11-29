@@ -9,5 +9,11 @@ angular.module('toolbar').component('toolbar', {
 		$self.undo=Canvas.undo;
 		$self.redo=Canvas.redo;
 		$self.clear=Canvas.clear;
+
+		//Color palette visibility
+		$self.palette=false;
+		$self.togglePalette=function(){
+			$self.palette=!$self.palette;			
+		}
 	}
 });

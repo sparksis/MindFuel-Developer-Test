@@ -4,10 +4,10 @@
 	<a ng-click="load"><i style="font-size: 2em;" class="fa fa-folder-open-o" aria-hidden="true"></i></a>
 	<a ng-click="toolbar.undo()" title="Undo" href="#"><i style="font-size: 2em;" class="fa fa-undo" aria-hidden="true"></i></a>
 	<a ng-click="toolbar.redo()" title="Redo" href="#"><i style="font-size: 2em;" class="fa fa-repeat" aria-hidden="true"></i></a>
-	<a ng-click="toolbar.pallet=!toolbar.pallet" title="Color Pallet" href="#"><i style="font-size: 2em;" class="fa fa-paint-brush" aria-hidden="true"></i></a>
+	<a ng-click="toolbar.togglePalette()" title="Color Pallet" href="#"><i style="font-size: 2em;" class="fa fa-paint-brush" aria-hidden="true"></i></a>
 	<span></span>
 	<a title="Logout" href="/logout" ><i class="fa fa-lock" style="font-size: 2em;"  aria-hidden="true"></i></a>
 	<a title="Admin" href="/admin" ng-show="$parent.$parent.app.s.authorities.includes('ROLE_ADMIN')"><i class="fa fa-user-o" style="font-size: 2em;"  aria-hidden="true"></i></a>
 	<br />
-	<a ng-repeat="color in toolbar.colors" href="#drawing" data-color="{{color}}" style="background: {{color}};" ng-show="toolbar.pallet"></a>
+	<a ng-repeat="color in toolbar.colors" href="#drawing" data-color="{{color}}" style="background: {{color}};" ng-show="toolbar.palette"></a>
 </div>
