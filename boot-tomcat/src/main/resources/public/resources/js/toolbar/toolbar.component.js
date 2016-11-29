@@ -1,7 +1,7 @@
 angular.module('toolbar').component('toolbar', {
 	templateUrl : 'resources/js/toolbar/toolbar.template.html',
 	controllerAs : 'toolbar',
-	controller : function(Canvas) {
+	controller : function(Canvas,$location) {
 		$self=this;
 		$self.colors = [ 'White', 'Silver', 'Gray', 'Black', 'Red',
 						'Maroon', 'Yellow', 'Olive', 'Lime', 'Green', 'Aqua',

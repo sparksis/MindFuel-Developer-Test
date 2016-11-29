@@ -1,9 +1,13 @@
-<div id="toolbar" >
-	<a ng-click="toolbar.clear()" href="#"><i style="font-size: 2em;" class="fa fa-file-o" aria-hidden="true"></i></a>
-	<a ng-click="save" ><i style="font-size: 2em;" class="fa fa-floppy-o" aria-hidden="true"></i></a>
+<div id="toolbar" md-colors="{color:'accent'}">
+	<a ng-click="toolbar.clear()" title="New" href="#"><i style="font-size: 2em;" class="fa fa-file-o" aria-hidden="true"></i></a>
+	<a ng-click="save"><i style="font-size: 2em;" class="fa fa-floppy-o" aria-hidden="true"></i></a>
 	<a ng-click="load"><i style="font-size: 2em;" class="fa fa-folder-open-o" aria-hidden="true"></i></a>
-	<a ng-click="toolbar.undo()" href="#"><i style="font-size: 2em;" class="fa fa-undo" aria-hidden="true"></i></a>
-	<a ng-click="toolbar.redo()" href="#"><i style="font-size: 2em;" class="fa fa-repeat" aria-hidden="true"></i></a>
+	<a ng-click="toolbar.undo()" title="Undo" href="#"><i style="font-size: 2em;" class="fa fa-undo" aria-hidden="true"></i></a>
+	<a ng-click="toolbar.redo()" title="Redo" href="#"><i style="font-size: 2em;" class="fa fa-repeat" aria-hidden="true"></i></a>
+	<a ng-click="toolbar.pallet=!toolbar.pallet" title="Color Pallet" href="#"><i style="font-size: 2em;" class="fa fa-paint-brush" aria-hidden="true"></i></a>
+	<span></span>
+	<a title="Logout" href="/logout" ><i class="fa fa-lock" style="font-size: 2em;"  aria-hidden="true"></i></a>
+	<a title="Admin" href="/admin" ng-show="$parent.$parent.app.s.authorities.includes('ROLE_ADMIN')"><i class="fa fa-user-o" style="font-size: 2em;"  aria-hidden="true"></i></a>
 	<br />
-	<a ng-repeat="color in toolbar.colors" href="#drawing" data-color="{{color}}" style="background: {{color}};"></a>
+	<a ng-repeat="color in toolbar.colors" href="#drawing" data-color="{{color}}" style="background: {{color}};" ng-show="toolbar.pallet"></a>
 </div>

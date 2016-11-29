@@ -10,3 +10,4 @@
 
 1. Redo doesn't check full stack
 1. Line/point thickness not set
+1. CSRF Token failures are not handled nicely
