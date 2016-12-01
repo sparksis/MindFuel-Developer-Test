@@ -34,6 +34,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		// FIXME Security is in memory only for JUNIT
+		if(System.getProperty("java.class.path").contains("junit")){
+			auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN","USER")
+			.and().withUser("user").password("user").roles("USER");
+			return;
+		}
+		
 		JdbcUserDetailsManagerConfigurer<AuthenticationManagerBuilder> configurer = auth.jdbcAuthentication().dataSource(ds); 
 		
 		try(Connection c = ds.getConnection();PreparedStatement statement = c.prepareStatement(VALIDATE_SCHEMA)){
