@@ -3,9 +3,13 @@ package ca.mindfuel.test.colton.model;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
+
+import static org.springframework.web.context.WebApplicationContext.SCOPE_REQUEST;
 
 /**
  * An interchange object for passing session data between client/server Security
