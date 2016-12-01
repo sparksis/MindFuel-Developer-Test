@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.web.context.request.RequestAttributes;
 
 import ca.mindfuel.test.colton.model.Image;
 import ca.mindfuel.test.colton.model.User;
