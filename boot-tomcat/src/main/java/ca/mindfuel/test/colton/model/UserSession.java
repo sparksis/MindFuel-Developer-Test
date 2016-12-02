@@ -25,7 +25,7 @@ public class UserSession {
 	/**
 	 * returns the username iff <code>authenticated==true</code>
 	 * 
-	 * @return
+	 * @return the username 
 	 */
 	public String getUsername() {
 		return isAuthenticated() ? auth.getName() : null;

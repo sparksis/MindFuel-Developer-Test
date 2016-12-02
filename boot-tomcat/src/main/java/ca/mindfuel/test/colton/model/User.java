@@ -13,8 +13,10 @@ public class User {
 	 * borrowing from spring, yes the ID Should be a long
 	 */
 	@Id
-	@Column(name = "USERNAME", nullable = false)
+	@Column(name = "USERNAME", nullable = false, length = 50)
 	private String username;
+	@Column(name = "PASSWORD", nullable = false, length = 500)
+	private String password;
 	@Column(name = "ENABLED", nullable = false)
 	private boolean active;
 
