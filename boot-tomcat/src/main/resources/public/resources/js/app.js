@@ -6,7 +6,11 @@ angular.module('drawingApp').config(
 					.backgroundPalette('blue-grey');
 		});
 
-angular.module('drawingApp').controller('AppController', function(Session) {
+angular.module('drawingApp').controller('AppController', function(Session,$location) {
 	var $self = this;
-	$self.s=Session.query();
+	$self.s=Session.query(null,function(){
+		if(!$self.s.authenticated){
+			$location.path("auth");
+		}
+	});
 });

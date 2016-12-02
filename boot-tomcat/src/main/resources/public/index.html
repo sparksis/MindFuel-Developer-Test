@@ -22,7 +22,6 @@
 			integrity="sha384-dNpIIXE8U05kAbPhy3G1cz+yZmTzA6CY8Vg/u2L9xRnHjJiAK76m2BIEaSEV+/aU"
 			crossorigin="anonymous">
 	</noscript>
-	<canvas-ui ng-show="app.s.authenticated"></canvas-ui>
-	<authentication-ui ng-hide="app.s.authenticated"></authentication-ui>
+	<ng-view></ng-view>
 </body>
 </html>
