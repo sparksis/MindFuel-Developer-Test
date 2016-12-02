@@ -43,6 +43,7 @@
 
 		<group-ref>authentication-ui</group-ref>
 		<group-ref>canvas-ui</group-ref>
+		<group-ref>admin-ui</group-ref>
 
 		<group-ref>services</group-ref>
 		<js>/resources/js/init.js</js>
@@ -62,6 +63,11 @@
 		<js>/resources/js/canvas-ui/canvas-ui.module.js</js>
 		<js>/resources/js/canvas-ui/canvas-ui.component.js</js>
 		<group-ref>toolbar</group-ref>
+	</group>
+	
+	<group name="admin-ui">
+		<js>/resources/js/admin-ui/admin-ui.module.js</js>
+		<js>/resources/js/admin-ui/admin-ui.component.js</js>
 	</group>
 
 	<group name="services">

@@ -1,0 +1,48 @@
+<div>
+	<header>
+		<h1 class="md-primary">Canvas Drawing!</h1>
+	</header>
+	<div id="admin-ui">
+		<content>
+		<table>
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>Password</th>
+					<th>Enabled</th>
+				</tr>
+			</thead>
+			<tr ng-repeat="user in admin.users">
+				<td>
+					<md-input-container> <input
+						ng-model="user.username"> </md-input-container>
+				</td>
+				<td>
+					<md-input-container> <input
+						ng-model="user.password"> </md-input-container>
+				</td>
+				<td>
+					<md-input-container> <input
+						ng-model="user.enabled" type="checkbox"> </md-input-container>
+				</td>
+			</tr>
+			<tfoot>
+				<tr>
+					<td>
+						<md-input-container> <label>Username</label>
+						<input ng-model="admin.newUser.username"> </md-input-container>
+					</td>
+					<td>
+						<md-input-container> <label>Password</label>
+						<input ng-model="admin.newUser.password"> </md-input-container>
+					</td>
+					<td>
+						<md-input-container> <input
+							ng-model="admin.newUser.enabled" type="checkbox"> </md-input-container>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+		</content>
+	</div>
+</div>

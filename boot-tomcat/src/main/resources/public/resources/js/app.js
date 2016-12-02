@@ -1,4 +1,4 @@
-angular.module('drawingApp', [ 'ngResource', 'ngRoute', 'ngMaterial' , 'canvasUi', 'authenticationUi' ]);
+angular.module('drawingApp', [ 'ngResource', 'ngRoute', 'ngMaterial' , 'canvasUi','adminUi', 'authenticationUi' ]);
 
 angular.module('drawingApp').config(
 		function($mdThemingProvider) {
