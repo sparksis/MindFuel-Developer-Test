@@ -1,7 +1,7 @@
 <div id="toolbar" md-colors="{color:'accent'}">
 	<a ng-click="toolbar.clear()" title="New" href="#"><i style="font-size: 2em;" class="fa fa-file-o" aria-hidden="true"></i></a>
-	<a ng-click="tolbar.save()"><i style="font-size: 2em;" class="fa fa-floppy-o" aria-hidden="true"></i></a>
-	<a ng-click="tolbar.load()"><i style="font-size: 2em;" class="fa fa-folder-open-o" aria-hidden="true"></i></a>
+	<a ng-click="toolbar.showSaveDialog($event)" href="#"><i style="font-size: 2em;" class="fa fa-floppy-o" aria-hidden="true"></i></a>
+	<a ng-click="toolbar.showLoadDialog()"><i style="font-size: 2em;" class="fa fa-folder-open-o" aria-hidden="true"></i></a>
 	<a ng-click="toolbar.undo()" title="Undo" href="#"><i style="font-size: 2em;" class="fa fa-undo" aria-hidden="true"></i></a>
 	<a ng-click="toolbar.redo()" title="Redo" href="#"><i style="font-size: 2em;" class="fa fa-repeat" aria-hidden="true"></i></a>
 	<a ng-click="toolbar.togglePalette()" title="Color Pallet" href="#"><i style="font-size: 2em;" class="fa fa-paint-brush" aria-hidden="true"></i></a>

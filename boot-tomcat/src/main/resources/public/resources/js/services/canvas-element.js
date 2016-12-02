@@ -7,33 +7,38 @@
  */
 angular.module('drawingApp').factory('Canvas', function() {
 
+	//Enable sketch on the canvas
 	$(function() {
-		sk = $('#drawing').sketch();
+		$('#drawing').sketch();
 	});
-
 	var el = document.getElementById("drawing");
+	var redo = [];
+
+	//add a readonly property to the canvas so 
+	// we can access the sketch without jquery
 	Object.defineProperty(el, 'sketch', {
 		get : function() {
 			return $('#drawing').data('sketch');
 		}
 	});
-	var redo = [];
-	var redraw = function() {
+
+	//Add convenience functions so we can control the canvas
+	el.redraw = function() {
 		el.sketch.redraw.call(el.sketch)
 	};
 	el.undo = function() {
 		redo.push(el.sketch.actions.pop());
-		redraw();
+		el.redraw();
 	};
 	el.redo = function() {
 		// TODO validate redo (check to see if the stack has changed, if so do
 		// not permit redoing)
 		el.sketch.actions.push(redo.pop());
-		redraw();
+		el.redraw();
 	};
 	el.clear = function() {
 		el.sketch.actions = [];
-		redraw();
+		el.redraw();
 	}
 	return el;
 });
