@@ -24,21 +24,14 @@ import ca.mindfuel.test.colton.service.UserRepository;
 @Scope(value = WebApplicationContext.SCOPE_REQUEST)
 public class UserResource {
 
-	@Autowired
-	private UserRepository repository;
-
 	private static User sanitizePassword(User user) {
 		User r = new User(user);
 		r.setPassword(null);
 		return r;
 	}
 
-	@RequestMapping("/rest/users")
-	public List<User> query() {
-		return repository.selectAll()
-				.stream().map(UserResource::sanitizePassword)
-				.collect(Collectors.toList());
-	}
+	@Autowired
+	private UserRepository repository;
 
 	@RequestMapping(path = "/rest/users/{username}")
 	public ResponseEntity<User> get(@PathVariable("username") String id) {
@@ -50,14 +43,9 @@ public class UserResource {
 		}
 	}
 
-	@RequestMapping(path = "/rest/users", method = RequestMethod.POST)
-	public ResponseEntity<Void> save(User user) {
-		Optional<User> dbUser = repository.selectById(user.getUsername());
-		if (dbUser.isPresent()) {
-			return new ResponseEntity<>(HttpStatus.CONFLICT);
-		}
-		repository.insertOrUpdate(user);
-		return new ResponseEntity<>(HttpStatus.CREATED);
+	@RequestMapping("/rest/users")
+	public List<User> query() {
+		return repository.selectAll().stream().map(UserResource::sanitizePassword).collect(Collectors.toList());
 	}
 
 	@RequestMapping(path = "/rest/users/{username}", method = RequestMethod.PUT)
@@ -68,12 +56,30 @@ public class UserResource {
 		}
 
 		Optional<User> dbUser = repository.selectById(username);
-		repository.insertOrUpdate(user);
 		if (dbUser.isPresent()) {
+			if (user.getPassword() == null || user.getPassword().trim().equals("")) {
+				user.setPassword(dbUser.get().getPassword());
+			}
+			repository.insertOrUpdate(user);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(HttpStatus.CREATED);
+			return save(user);
 		}
+	}
+
+	@RequestMapping(path = "/rest/users", method = RequestMethod.POST)
+	public ResponseEntity<Void> save(User user) {
+		Optional<User> dbUser = repository.selectById(user.getUsername());
+		if (dbUser.isPresent()) {
+			return new ResponseEntity<>(HttpStatus.CONFLICT);
+		}
+
+		if (user.getPassword() == null || user.getPassword().trim().equals("")) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+
+		repository.insertOrUpdate(user);
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
 }
