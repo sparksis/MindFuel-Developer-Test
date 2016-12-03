@@ -9,36 +9,47 @@
 				<tr>
 					<th>Username</th>
 					<th>Password</th>
-					<th>Enabled</th>
+					<th>Active</th>
+					<th  style="width:90px;">&nbsp;</th>
 				</tr>
 			</thead>
-			<tr ng-repeat="user in admin.users">
-				<td>
-					<md-input-container> <input
-						ng-model="user.username"> </md-input-container>
-				</td>
-				<td>
-					<md-input-container> <input
-						ng-model="user.password"> </md-input-container>
-				</td>
-				<td>
-					<md-input-container> <input
-						ng-model="user.enabled" type="checkbox"> </md-input-container>
-				</td>
-			</tr>
+			<tbody>
+				<tr ng-repeat="user in admin.users">
+					<td>
+						<md-input-container>
+						<label>Username</label> 
+						<input ng-model="user.username" readonly> </md-input-container>
+					</td>
+					<td>
+						<md-input-container>
+						<label>Password</label> 
+						<input ng-model="user.password"></md-input-container>
+					</td>
+					<td>
+						<md-input-container> <input
+							ng-model="user.active" type="checkbox"> </md-input-container>
+					</td>
+					<td> 
+						<md-button class="md-accent md-raised" ng-click="user.$save()" href="#">Save</md-button>
+					</td>
+				</tr>
+			</tbody>
 			<tfoot>
 				<tr>
 					<td>
 						<md-input-container> <label>Username</label>
-						<input ng-model="admin.newUser.username"> </md-input-container>
+						<input ng-model="admin.newUser.username" required> </md-input-container>
 					</td>
 					<td>
 						<md-input-container> <label>Password</label>
-						<input ng-model="admin.newUser.password"> </md-input-container>
+						<input ng-model="admin.newUser.password" required> </md-input-container>
 					</td>
 					<td>
 						<md-input-container> <input
-							ng-model="admin.newUser.enabled" type="checkbox"> </md-input-container>
+							ng-model="admin.newUser.active" type="checkbox"> </md-input-container>
+					</td>
+					<td>
+						<md-button class="md-accent md-raised" ng-click="admin.createUser()" href="#">Create</md-button>
 					</td>
 				</tr>
 			</tfoot>

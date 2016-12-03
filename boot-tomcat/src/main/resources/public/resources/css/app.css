@@ -28,6 +28,15 @@ table {
 	width: 100%;
 }
 
+table > tbody td > md-input-container.md-input-has-value > label ,
+table > tbody td > md-input-container.md-input-focused > label  {
+	display: none;
+}
+
+td > a.md-button{
+	margin-top:-29px;
+}
+
 md-input-container {
 	width: 100%;
 }

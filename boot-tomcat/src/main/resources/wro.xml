@@ -74,5 +74,6 @@
 		<js>/resources/js/services/canvas-element.js</js>
 		<js>/resources/js/services/session-resource.js</js>
 		<js>/resources/js/services/image-resource.js</js>
+		<js>/resources/js/services/user-resource.js</js>
 	</group>
 </groups>
