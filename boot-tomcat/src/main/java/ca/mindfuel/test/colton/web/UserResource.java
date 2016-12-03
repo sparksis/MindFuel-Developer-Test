@@ -16,6 +16,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -98,7 +99,7 @@ public class UserResource {
 	}
 
 	@RequestMapping(path = "/rest/users", method = RequestMethod.POST)
-	public ResponseEntity<Void> save(UserWrapper user) {
+	public ResponseEntity<Void> save(@RequestBody UserWrapper user) {
 		Optional<User> dbUser = repository.selectById(user.getUsername());
 		if (dbUser.isPresent()) {
 			return new ResponseEntity<>(HttpStatus.CONFLICT);
