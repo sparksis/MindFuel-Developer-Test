@@ -3,6 +3,8 @@ package ca.mindfuel.test.colton.web;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,11 +34,11 @@ public class ImageResource {
 
 	@RequestMapping(value = "/rest/images/{filename}", method = GET)
 	public ResponseEntity<byte[]> get(@PathVariable("filename") String filename) {
-		Image image = repository.selectImageByFilenameAndUser(filename, currentUser);
-		if (image == null) {
+		Optional<Image> image = repository.selectImageByFilenameAndUser(filename, currentUser);
+		if (!image.isPresent()) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<>(image.getFiledata(), HttpStatus.OK);
+		return new ResponseEntity<>(image.get().getFiledata(), HttpStatus.OK);
 	}
 
 	/**
@@ -48,15 +50,17 @@ public class ImageResource {
 	 */
 	@RequestMapping(value = "/rest/images/{filename}", method = PUT)
 	public ResponseEntity<Void> save(@PathVariable("filename") String filename, @RequestBody byte[] data) {
-		Image image = repository.selectImageByFilenameAndUser(filename, currentUser);
-		if(image==null){
-			image = new Image();
-			image.setFilename(filename);
-			image.setUser(currentUser);
-		}
+		Image image = repository.selectImageByFilenameAndUser(filename, currentUser).orElse(createImage(filename));
 		image.setFiledata(data);
 
 		repository.insertOrUpdate(image);
 		return new ResponseEntity<>(HttpStatus.CREATED);
+	}
+
+	private Image createImage(String filename) {
+		Image image = new Image();
+		image.setFilename(filename);
+		image.setUser(currentUser);
+		return image;
 	}
 }

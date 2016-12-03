@@ -1,5 +1,7 @@
 package ca.mindfuel.test.colton.service;
 
+import java.util.Optional;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -34,7 +36,7 @@ public class ImageRepository extends AbstractRepository<Long, Image> {
 	 * @param currentUser
 	 * @return the image from the database or null
 	 */
-	public Image selectImageByFilenameAndUser(String filename, User currentUser) {
+	public Optional<Image> selectImageByFilenameAndUser(String filename, User currentUser) {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Image> cq = cb.createQuery(Image.class);
 		Root<Image> image = cq.from(Image.class);
@@ -45,9 +47,9 @@ public class ImageRepository extends AbstractRepository<Long, Image> {
 			)
 		);
 		try {
-			return em.createQuery(cq).getSingleResult();
+			return Optional.of(em.createQuery(cq).getSingleResult());
 		} catch (NoResultException nre) {
-			return null;
+			return Optional.empty();
 		}
 	}
 
