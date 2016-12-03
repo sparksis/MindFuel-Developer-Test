@@ -16,39 +16,41 @@ import ca.mindfuel.test.colton.model.User_;
 import ca.mindfuel.test.colton.model.UserSession;
 
 @Repository
-public class UserRepository {
+public class UserRepository extends AbstractRepository<String, User> {
 	
+	public UserRepository() {
+		super(User.class);
+	}
+
 	@Autowired
 	private EntityManager em;
-	
+
+	@Override
+	protected EntityManager getEntityManager() {
+		return em;
+	}
+
 	@Bean
 	@Scope("request")
-	public UserSession userSession(){
+	public UserSession userSession() {
 		return new UserSession();
 	}
-	
+
 	@Bean
 	@Scope("request")
-	public User currentUser(UserSession userSession){
+	public User currentUser(UserSession userSession) {
 		return selectByUsername(userSession.getUsername());
 	}
 
-	public Image selectImageByFilenameAndUser(String filename, String username) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Image insertOrUpdateImageByFilenameAndUser(String filename, String username) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	/**
+	 * 
+	 * @param username
+	 * @return
+	 * @deprecated use selectById
+	 */
+	@Deprecated
 	public User selectByUsername(String username) {
-		CriteriaBuilder cb =  em.getCriteriaBuilder();
-		CriteriaQuery<User> cq = cb.createQuery(User.class);
-		Root<User> user = cq.from(User.class);
-		cq.where(cb.equal(user.get(User_.username), username));
-		return em.createQuery(cq).getSingleResult();
+		return selectById(username).orElse(null);
 	}
 
 }

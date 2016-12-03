@@ -14,10 +14,19 @@ import ca.mindfuel.test.colton.model.Image_;
 import ca.mindfuel.test.colton.model.User;
 
 @Repository
-public class ImageRepository {
+public class ImageRepository extends AbstractRepository<Long, Image> {
 	
+	public ImageRepository() {
+		super(Image.class);
+	}
+
 	@Autowired
 	private EntityManager em;
+
+	@Override
+	protected EntityManager getEntityManager() {
+		return em;
+	}
 
 	/**
 	 * 
@@ -41,11 +50,5 @@ public class ImageRepository {
 			return null;
 		}
 	}
-
-	public void insertOrUpdate(Image image) {
-		em.merge(image);
-	}
-	
-	
 
 }

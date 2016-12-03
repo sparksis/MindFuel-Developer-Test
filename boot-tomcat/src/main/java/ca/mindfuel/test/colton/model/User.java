@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "USERS")
-public class User {
+public class User implements IdentifiableEntity<String> {
 
 	/**
 	 * borrowing from spring, yes the ID Should be a long
@@ -19,6 +19,11 @@ public class User {
 	private String password;
 	@Column(name = "ENABLED", nullable = false)
 	private boolean active;
+	
+	@Override
+	public String getId(){
+		return getUsername();
+	}
 
 	public String getUsername() {
 		return username;
