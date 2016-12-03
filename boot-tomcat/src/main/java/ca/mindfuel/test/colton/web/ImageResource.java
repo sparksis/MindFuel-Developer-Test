@@ -47,7 +47,7 @@ public class ImageResource {
 	 * @return 201 for success (does not distinguish between update/create)
 	 */
 	@RequestMapping(value = "/rest/images/{filename}", method = PUT)
-	public ResponseEntity<Void> set(@PathVariable("filename") String filename, @RequestBody byte[] data) {
+	public ResponseEntity<Void> save(@PathVariable("filename") String filename, @RequestBody byte[] data) {
 		Image image = repository.selectImageByFilenameAndUser(filename, currentUser);
 		if(image==null){
 			image = new Image();
