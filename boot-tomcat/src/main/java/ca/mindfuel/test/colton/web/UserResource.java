@@ -1,6 +1,5 @@
 package ca.mindfuel.test.colton.web;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
