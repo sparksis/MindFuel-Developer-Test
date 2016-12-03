@@ -4,6 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "USERS")
@@ -21,6 +24,7 @@ public class User implements IdentifiableEntity<String> {
 	private boolean active;
 	
 	@Override
+	@JsonIgnore
 	public String getId(){
 		return getUsername();
 	}
