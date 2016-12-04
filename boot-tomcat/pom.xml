@@ -34,15 +34,10 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- http://docs.spring.io/spring-security/site/docs/current/guides/html5//helloworld-boot.html -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
 
 		<!-- http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-sql.html -->
 		<dependency>

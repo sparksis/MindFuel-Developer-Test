@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
@@ -27,6 +28,7 @@ import ca.mindfuel.test.colton.service.UserRepository;
 @Transactional
 @RestController
 @Scope(value = WebApplicationContext.SCOPE_REQUEST)
+@Secured("ROLE_ADMIN")
 public class UserResource {
 
 	public static class UserWrapper extends User {

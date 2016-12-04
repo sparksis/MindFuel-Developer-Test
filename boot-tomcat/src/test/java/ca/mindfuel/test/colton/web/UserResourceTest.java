@@ -44,16 +44,15 @@ public class UserResourceTest {
 
 	@Before
 	public void setup() {
-		restTemplate.withBasicAuth("admin", "admin");
+		restTemplate = restTemplate.withBasicAuth("admin", "admin");
 	}
 
 	@Test
 	public void testCreateUserWithoutCredentials() {
-		restTemplate.withBasicAuth("wrong", "wrong");
 		UserWrapper user = buildTestUser();
 		user.setUsername("testCreateUserWithoutCredentials");
 
-		ResponseEntity<Void> body = this.restTemplate.postForEntity("/rest/users", user, Void.class);
+		ResponseEntity<Void> body = this.restTemplate.withBasicAuth("testCreateUserWithoutCredentials","nothing").postForEntity("/rest/users", user, Void.class);
 		assertThat(body.getStatusCode()).isEqualTo(HttpStatus.UNAUTHORIZED);
 	}
 
