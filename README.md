@@ -41,6 +41,27 @@
 * Saved Drawings will require a name. Unique within an indivudual users set of drawings.
 * Code will be checked in at various stages into Mindfuel's GIT repository, and you will be setup with an account for that.
 
+### Backend Requirements
+
+* Java application based on Spring Boot
+* Maven for build manager
+* Appropriate Unit testing
+  * unforutnately corbatura is breaking on a lambda for me so I can't indicate coverage
+* Backend to Frontend data interchange format will be json
+
+### Frontend Requirements
+* Angular JS 1.5.2 will used to provide quick user interaction, and mostly a single page / api
+driven single page application.
+* HTML 5 Canvas Object
+* Will work on both Chrome and Firefox of latest public release
+  * Firefox appears to run poorly with sketch.js
+  
+* CSS Bootstrapping of your choice, but we will expect a moderately scalable UI
+  * Angular Material 
+  
+* Function over form
+  * I'm hoping I achieved both
+
 ## Deviation
 
 * Single page application where possible
@@ -54,7 +75,11 @@ The following are requirements that am either still working on or didn't notice 
 * Loading drawings should present a paginated list of available drawings (for a given user)
 * Erasing a canvas with any draw moves should effect a confirmation prompt
 * Loaded drawings should replay on to a blank canvas with the 'draw' operations in the original order.
-  
+
+### Frontend Requirements
+
+* Appropriate Unit testing
+  * limited or non-existent (spent too much time elsewhere)
 
 
 # Continuous Integration
