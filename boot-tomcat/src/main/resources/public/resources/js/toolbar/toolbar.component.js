@@ -8,7 +8,21 @@ angular.module('toolbar').component('toolbar', {
 						'Teal', 'Blue', 'Navy', 'Fuchsia', 'Purple' ];
 		$self.undo=Canvas.undo;
 		$self.redo=Canvas.redo;
-		$self.clear=Canvas.clear;
+		$self.clear=function(){
+			if(Canvas.sketch.actions.length>0){
+				$mdDialog.show(
+					$mdDialog.confirm()
+						.title('Clear Canvas?')
+						.textContent('Would you like to clear the Canvas?')
+						.ok('Clear Canvas')
+						.cancel('Continue Drawing')
+				).then(function(){
+					Canvas.clear();
+				});
+			}else{
+				Canvas.clear();
+			}
+		}
 		
 		$self.filename=undefined;
 

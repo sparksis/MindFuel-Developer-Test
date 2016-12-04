@@ -22,7 +22,7 @@
 * Each 'draw' will be from a mouse press to mouse release
   * Uses sketch.js library defaults.  
   * moving outside the window also triggers the line segment end.
-  * moving over the toolbar/title tiggers line segment end
+  * moving over the toolbar/title triggers line segment end
 
 * There should be able to be at least 64 draw actions. How you handle drawing over this limit (if present) is up to you.
   * Manually verified, no noticeable performance deprecation.
@@ -38,6 +38,7 @@
 * Drawings should be able to be saved to the backend database, per user.
 * Drawings should be able to be loaded from the backend database, per user.
 * There should be a button to 'Erase and restart' the canvas
+* Erasing a canvas with any draw moves should effect a confirmation prompt
 * Saved Drawings will require a name. Unique within an indivudual users set of drawings.
 * Code will be checked in at various stages into Mindfuel's GIT repository, and you will be setup with an account for that.
 
@@ -46,7 +47,7 @@
 * Java application based on Spring Boot
 * Maven for build manager
 * Appropriate Unit testing
-  * unforutnately corbatura is breaking on a lambda for me so I can't indicate coverage
+  * unfortunately cobertura is breaking on a lambda for me so I can't indicate coverage
 * Backend to Frontend data interchange format will be json
 
 ### Frontend Requirements
@@ -73,8 +74,10 @@ driven single page application.
 The following are requirements that am either still working on or didn't notice when going through the first time
 
 * Loading drawings should present a paginated list of available drawings (for a given user)
-* Erasing a canvas with any draw moves should effect a confirmation prompt
 * Loaded drawings should replay on to a blank canvas with the 'draw' operations in the original order.
+    * I'm not sure if this referring to animations or not.  
+    * Based on the impl it should be possible to animate but from my email with Richard storing historical data is out of scope
+    * based on time left I'm going to omit this requirement  
 
 ### Frontend Requirements
 
