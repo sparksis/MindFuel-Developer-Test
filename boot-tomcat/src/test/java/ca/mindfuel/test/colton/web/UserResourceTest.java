@@ -52,7 +52,8 @@ public class UserResourceTest {
 		UserWrapper user = buildTestUser();
 		user.setUsername("testCreateUserWithoutCredentials");
 
-		ResponseEntity<Void> body = this.restTemplate.withBasicAuth("testCreateUserWithoutCredentials","nothing").postForEntity("/rest/users", user, Void.class);
+		ResponseEntity<Void> body = this.restTemplate.withBasicAuth("testCreateUserWithoutCredentials", "nothing")
+				.postForEntity("/rest/users", user, Void.class);
 		assertThat(body.getStatusCode()).isEqualTo(HttpStatus.UNAUTHORIZED);
 	}
 
@@ -67,15 +68,15 @@ public class UserResourceTest {
 
 	@Test
 	public void testCreateInactiveUser() {
-		final String name = "testCreateInactiveUser";
+		final String NAME = "testCreateInactiveUser";
 		UserWrapper user = buildTestUser();
-		user.setUsername(name);
+		user.setUsername(NAME);
 		user.setActive(false);
 
 		ResponseEntity<Void> body = this.restTemplate.postForEntity("/rest/users", user, Void.class);
 		assertThat(body.getStatusCode()).isEqualTo(HttpStatus.CREATED);
 
-		User createUser = this.restTemplate.getForObject("/rest/users/" + name, User.class);
+		User createUser = this.restTemplate.getForObject("/rest/users/" + NAME, User.class);
 		assertThat(createUser.isActive() == false);
 	}
 
@@ -94,9 +95,32 @@ public class UserResourceTest {
 	}
 
 	@Test
-	public void testUserNotFound(){
+	public void testUserNotFound() {
 		ResponseEntity<User> user = this.restTemplate.getForEntity("/rest/users/testUserNotFound", User.class);
 		assertThat(user.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
 	}
-	
+
+	@Test
+	public void testInactivateUser() {
+		final String NAME = "testInactivateUser";
+		UserWrapper user = buildTestUser();
+		user.setUsername(NAME);
+		user.setActive(true);
+
+		//Create the user to inactivate
+		ResponseEntity<Void> createBody = this.restTemplate.postForEntity("/rest/users", user, Void.class);
+		assertThat(createBody.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+
+		User createdUser = this.restTemplate.getForObject("/rest/users/" + NAME, User.class);
+		assertThat(createdUser.isActive()).isTrue();
+
+		//Update the user to inactive
+		createdUser.setActive(false);
+		this.restTemplate.put("/rest/users/" + NAME, new UserWrapper(createdUser));
+		
+		//find the inactive user
+		User updatedUser = this.restTemplate.getForObject("/rest/users/" + NAME, User.class);
+		assertThat(updatedUser.isActive()).isFalse();
+	}
+
 }
