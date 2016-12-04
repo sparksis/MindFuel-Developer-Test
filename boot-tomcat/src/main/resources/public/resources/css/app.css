@@ -50,6 +50,9 @@ md-input-container {
 :-webkit-any(a) {
 	color: inherit;
 }
+:-moz-any(a) {
+	color: inherit;
+}
 
 #loginForm {
 	width: 330px;
