@@ -1,6 +1,3 @@
-job:
-  tags:
-    - colton
-
 build:
+  tags: "colton"
   script: "mvn install -B"
