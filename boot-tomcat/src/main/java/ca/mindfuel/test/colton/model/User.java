@@ -11,6 +11,18 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "USERS")
 public class User implements IdentifiableEntity<String> {
 
+	/**
+	 * borrowing from spring, yes the ID Should be a long
+	 */
+	@Id
+	@Column(name = "USERNAME", nullable = false, length = 50)
+	private String username;
+
+	@Column(name = "PASSWORD", nullable = false, length = 500)
+	private String password;
+
+	@Column(name = "ENABLED", nullable = false)
+	private boolean active;
 	public User() {
 	}
 
@@ -25,38 +37,18 @@ public class User implements IdentifiableEntity<String> {
 		this.active = user.active;
 	}
 
-	/**
-	 * borrowing from spring, yes the ID Should be a long
-	 */
-	@Id
-	@Column(name = "USERNAME", nullable = false, length = 50)
-	private String username;
-	@Column(name = "PASSWORD", nullable = false, length = 500)
-	private String password;
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	@Column(name = "ENABLED", nullable = false)
-	private boolean active;
-
 	@Override
 	@JsonIgnore
 	public String getId() {
 		return getUsername();
 	}
 
-	public String getUsername() {
-		return username;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public String getUsername() {
+		return username;
 	}
 
 	public boolean isActive() {
@@ -65,6 +57,14 @@ public class User implements IdentifiableEntity<String> {
 
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 }
