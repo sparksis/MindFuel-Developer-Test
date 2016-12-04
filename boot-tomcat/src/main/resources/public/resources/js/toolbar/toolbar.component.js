@@ -69,9 +69,27 @@ angular.module('toolbar').component('toolbar', {
 		
 		    function DialogController($scope, $mdDialog) {
 		    	var $self=this;
+		    	$self.showAfter=0;
+		    	$self.imagesPage;
+		    	$self.nextPage=function(){
+		    		if($self.showAfter+10<$self.images.length){
+		    			$self.showAfter+=10;
+		    			$self.imagesPage=$self.images.slice($self.showAfter,$self.showAfter+10)
+		    			$self.image=$self.imagesPage[0];
+		    		}
+		    	}
+		    	$self.prevPage=function(){
+		    		if($self.showAfter-10>=0){
+		    			$self.showAfter-=10;
+		    			$self.imagesPage=$self.images.slice($self.showAfter,$self.showAfter+10)
+		    			$self.image=$self.imagesPage[0];
+		    		}
+		    	}
+		    	
 		    	$self.images = Image.query({},
 		    		function(d) {
 	    				$self.disabled=d.length==0;
+						$self.imagesPage=d.slice(0,10);
 						$self.image = d[0];
 					});
 		    	$self.image=undefined;

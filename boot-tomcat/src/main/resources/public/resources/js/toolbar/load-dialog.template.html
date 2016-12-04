@@ -13,8 +13,16 @@
 	 <md-dialog-content>
       <div class="md-dialog-content">
       	<select ng-model="load.image" size="10" style="overflow: hidden; width: 100%">
-      		<option ng-repeat="image in load.images">{{image}}</option>
+      		<option ng-repeat="image in load.imagesPage">{{image}}</option>
       	</select>
+	    <md-dialog-actions layout="row">
+	      <md-button ng-click="load.prevPage()" ng-disabled="load.showAfter-10<0">
+	      	&lt;&lt;
+	      </md-button>
+	      <md-button ng-click="load.nextPage()" ng-disabled="load.showAfter+10>=load.images.length">
+	        &gt;&gt;
+	      </md-button>
+	    </md-dialog-actions>
       </div>
     </md-dialog-content>  
 
