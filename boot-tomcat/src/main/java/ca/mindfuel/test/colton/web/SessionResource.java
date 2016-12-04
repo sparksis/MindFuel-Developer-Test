@@ -10,11 +10,6 @@ import ca.mindfuel.test.colton.model.UserSession;
 @RestController
 public class SessionResource {
 
-	/**
-	 * 
-	 * @param session
-	 * @return
-	 */
 	@ResponseBody
 	@RequestMapping(value = "rest/session", produces = MediaType.APPLICATION_JSON_VALUE)
 	public UserSession getSession(UserSession session) {

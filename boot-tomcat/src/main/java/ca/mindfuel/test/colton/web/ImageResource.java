@@ -8,7 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,9 +21,9 @@ import ca.mindfuel.test.colton.model.User;
 import ca.mindfuel.test.colton.service.ImageRepository;
 
 @RestController
-@PreAuthorize("hasRole('USER')")
 @RequestScope
 @Transactional
+@Secured("ROLE_USER")
 public class ImageResource {
 
 	@Autowired
@@ -32,6 +32,11 @@ public class ImageResource {
 	@Autowired
 	private User currentUser;
 
+	/**
+	 * Load a previously saved image from the database
+	 * @param filename the filename used when saving the image
+	 * @return 200 & data if image was found 404 otherwise
+	 */
 	@RequestMapping(value = "/rest/images/{filename}", method = GET)
 	public ResponseEntity<byte[]> get(@PathVariable("filename") String filename) {
 		Optional<Image> image = repository.selectImageByFilenameAndUser(filename, currentUser);
@@ -44,8 +49,8 @@ public class ImageResource {
 	/**
 	 * Create or overwrite an image with a given name for a given user
 	 * 
-	 * @param filename
-	 * @param data
+	 * @param filename the name to be used in saving to the database
+	 * @param data the data to save to the database 
 	 * @return 201 for success (does not distinguish between update/create)
 	 */
 	@RequestMapping(value = "/rest/images/{filename}", method = PUT)
