@@ -37,6 +37,7 @@
   
 * Drawings should be able to be saved to the backend database, per user.
 * Drawings should be able to be loaded from the backend database, per user.
+* Loading drawings should present a paginated list of available drawings (for a given user)
 * There should be a button to 'Erase and restart' the canvas
 * Erasing a canvas with any draw moves should effect a confirmation prompt
 * Saved Drawings will require a name. Unique within an indivudual users set of drawings.
@@ -73,7 +74,6 @@ driven single page application.
 
 The following are requirements that am either still working on or didn't notice when going through the first time
 
-* Loading drawings should present a paginated list of available drawings (for a given user)
 * Loaded drawings should replay on to a blank canvas with the 'draw' operations in the original order.
     * I'm not sure if this referring to animations or not.  
     * Based on the impl it should be possible to animate but from my email with Richard storing historical data is out of scope
