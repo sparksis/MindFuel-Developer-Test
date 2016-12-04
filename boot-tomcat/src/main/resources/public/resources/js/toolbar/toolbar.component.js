@@ -9,6 +9,8 @@ angular.module('toolbar').component('toolbar', {
 		$self.undo=Canvas.undo;
 		$self.redo=Canvas.redo;
 		$self.clear=Canvas.clear;
+		
+		$self.filename=undefined;
 
 		//Color palette visibility
 		$self.palette=false;
@@ -22,11 +24,13 @@ angular.module('toolbar').component('toolbar', {
 			      .title('Save')
 			      .textContent('Filename')
 			      .placeholder('eg. image.png')
+			      .initialValue($self.filename)
 			      .targetEvent(ev)
 			      .ok('Save')
 			      .cancel('Cancel');
 			    $mdDialog.show(confirm)
 			    .then(function(result) { 
+			    	$self.filename=result;
 			    	Image.save({filename:result,data:Canvas.sketch.actions});
 			    });
 		};
@@ -37,11 +41,13 @@ angular.module('toolbar').component('toolbar', {
 		      .title('Load')
 		      .textContent('Filename')
 		      .placeholder('eg. image.png')
-		      .targetEvent(ev)
+			  .initialValue($self.filename)
+			  .targetEvent(ev)
 		      .ok('Load')
 		      .cancel('Cancel');
 		    $mdDialog.show(confirm)
-		    .then(function(result) { 
+		    .then(function(result) {
+		    	$self.filename=result;
 		    	Image.get({filename:result},function(image){
 		    		Canvas.sketch.actions=image.data;
 		    		Canvas.redraw();
