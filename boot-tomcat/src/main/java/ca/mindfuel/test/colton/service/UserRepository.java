@@ -11,7 +11,7 @@ import ca.mindfuel.test.colton.model.UserSession;
 
 @Repository
 public class UserRepository extends AbstractRepository<String, User> {
-	
+
 	public UserRepository() {
 		super(User.class);
 	}
@@ -34,17 +34,6 @@ public class UserRepository extends AbstractRepository<String, User> {
 	@Scope("request")
 	public User currentUser(UserSession userSession) {
 		return selectById(userSession.getUsername()).get();
-	}
-
-	/**
-	 * 
-	 * @param username
-	 * @return
-	 * @deprecated use selectById
-	 */
-	@Deprecated
-	public User selectByUsername(String username) {
-		return selectById(username).orElse(null);
 	}
 
 }
