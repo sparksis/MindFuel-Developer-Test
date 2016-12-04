@@ -1,3 +1,14 @@
+# Continious Integration
+
+##Jenkins
+[![Build Status](http://pi-jenkins.sparksis.com/buildStatus/icon?job=MindFuel Test)](http://pi-jenkins.sparksis.com/job/MindFuel Test)
+User: guest
+Password: 9VwRDs8ozi
+
+##GitLab pipeline
+[![build status](https://git.mindfuel.ca/tests/colton/badges/master/build.svg)](https://git.mindfuel.ca/tests/colton/commits/master)
+
+
 # Build
     mvn clean install 
     
