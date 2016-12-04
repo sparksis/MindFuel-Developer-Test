@@ -32,6 +32,17 @@ import ca.mindfuel.test.colton.service.UserRepository;
 public class UserResource {
 
 	public static class UserWrapper extends User {
+		public UserWrapper() {
+		}
+
+		public UserWrapper(User user) {
+			super(user);
+			if (user instanceof UserWrapper) {
+				UserWrapper userWrapper = (UserWrapper) user;
+				getRolesWanted().addAll(userWrapper.getRolesWanted());
+			}
+		}
+
 		private List<String> rolesWanted;
 
 		public List<String> getRolesWanted() {
@@ -46,9 +57,11 @@ public class UserResource {
 		}
 
 		public org.springframework.security.core.userdetails.User toSpringUser() {
-			List<GrantedAuthority> authorities = getRolesWanted().stream().map(it->new SimpleGrantedAuthority(it)).collect(Collectors.toList());
+			List<GrantedAuthority> authorities = getRolesWanted().stream().map(it -> new SimpleGrantedAuthority(it))
+					.collect(Collectors.toList());
 			org.springframework.security.core.userdetails.User u;
-			u = new org.springframework.security.core.userdetails.User(this.getUsername(), this.getPassword(),this.isActive(),true,true,true,authorities);
+			u = new org.springframework.security.core.userdetails.User(this.getUsername(), this.getPassword(),
+					this.isActive(), true, true, true, authorities);
 			return u;
 		}
 	}
