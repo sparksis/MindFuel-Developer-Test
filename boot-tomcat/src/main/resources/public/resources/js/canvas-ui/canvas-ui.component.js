@@ -3,5 +3,6 @@ angular.module('canvasUi').component('canvasUi', {
 	controllerAs: 'CanvasController',
 	controller : function(Canvas) {
 		Canvas.init();
+		Canvas.sketch.size=2;
 	}
 });
