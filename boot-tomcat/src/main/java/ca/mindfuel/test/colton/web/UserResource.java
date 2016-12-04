@@ -79,7 +79,7 @@ public class UserResource {
 	}
 
 	@RequestMapping(path = "/rest/users/{username}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> save(@PathVariable("username") String username, UserWrapper user) {
+	public ResponseEntity<Void> save(@PathVariable("username") String username, @RequestBody UserWrapper user) {
 		// validate the request
 		if (!user.getUsername().equals(username)) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

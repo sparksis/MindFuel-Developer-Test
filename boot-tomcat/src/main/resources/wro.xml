@@ -52,6 +52,7 @@
 	<group name="authentication-ui">
 		<js>/resources/js/authentication-ui/authentication-ui.module.js</js>
 		<js>/resources/js/authentication-ui/authentication-ui.component.js</js>
+		<js>/resources/js/authentication-ui/logout-ui.component.js</js>
 	</group>
 
 	<group name="toolbar">

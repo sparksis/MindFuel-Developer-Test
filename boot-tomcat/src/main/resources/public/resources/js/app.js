@@ -15,7 +15,7 @@ angular.module('drawingApp').controller('AppController', function(Session,$locat
 	var $self = this;
 	$self.s=Session.query(null,function(){
 		if(!$self.s.authenticated){
-			$location.path("auth");
+			$location.path("login");
 		}
 	});
 });

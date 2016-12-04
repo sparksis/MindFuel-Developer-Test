@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RouteProvider {
 
-	@RequestMapping(path = { "/", "/auth", "admin" })
+	@RequestMapping(path = { "/", "/login", "admin", "logout" })
 	public byte[] reroute() throws IOException {
 		try (InputStream stream = RouteProvider.class.getResourceAsStream("/public/index.html")) {
 			return StreamUtils.copyToByteArray(stream);

@@ -59,3 +59,10 @@ md-input-container {
 	margin-top: 20vh;
 	margin-bottom: auto;
 }
+
+#toast-anchor {
+	position: absolute;
+	margin-bottom:35px;
+	bottom: 0px;
+	width: 100%;
+}

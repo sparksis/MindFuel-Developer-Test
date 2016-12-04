@@ -24,23 +24,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().anyRequest().permitAll();
 		http.formLogin().loginPage("/").loginProcessingUrl("/login");
+		http.logout().logoutUrl("/logout").logoutSuccessUrl("/login").invalidateHttpSession(true)
+				.deleteCookies("JSESSIONID", "X-CSRF-TOKEN");
 	}
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication().dataSource(ds); 
+		auth.jdbcAuthentication().dataSource(ds);
 	}
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
 	@Bean
 	public JdbcUserDetailsManager userDetailsManager() {
-	    JdbcUserDetailsManager manager = new JdbcUserDetailsManager();
-	    manager.setDataSource(ds);
-	    return manager;
+		JdbcUserDetailsManager manager = new JdbcUserDetailsManager();
+		manager.setDataSource(ds);
+		return manager;
 	}
 
 }
