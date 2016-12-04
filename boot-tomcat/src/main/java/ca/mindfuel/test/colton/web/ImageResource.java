@@ -3,7 +3,9 @@ package ca.mindfuel.test.colton.web;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,6 +33,11 @@ public class ImageResource {
 	
 	@Autowired
 	private User currentUser;
+
+	@RequestMapping("/rest/images")
+	public List<String> query(){
+		return repository.selectAll().stream().filter(it->it.getUser().equals(currentUser)).map(Image::getFilename).collect(Collectors.toList());
+	}
 
 	/**
 	 * Load a previously saved image from the database

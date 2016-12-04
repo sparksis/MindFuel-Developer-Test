@@ -50,23 +50,40 @@ angular.module('toolbar').component('toolbar', {
 		};
 		
 		$self.showLoadDialog = function(ev) {
-		    // Appending dialog to document.body to cover sidenav in docs app
-		    var confirm = $mdDialog.prompt()
-		      .title('Load')
-		      .textContent('Filename')
-		      .placeholder('eg. image.png')
-			  .initialValue($self.filename)
-			  .targetEvent(ev)
-		      .ok('Load')
-		      .cancel('Cancel');
-		    $mdDialog.show(confirm)
-		    .then(function(result) {
-		    	$self.filename=result;
-		    	Image.get({filename:result},function(image){
-		    		Canvas.sketch.actions=image.data;
-		    		Canvas.redraw();
-		    	});
-		    });
-		};
+		    $mdDialog.show({
+		    	controllerAs:'load',
+		    	controller: DialogController,
+		        templateUrl: '/resources/js/toolbar/load-dialog.template.html',
+		        parent: angular.element(document.body),
+		        targetEvent: ev,
+		        clickOutsideToClose:true
+		      }).then(function(result) {
+			    	$self.filename=result;
+			    	Image.get({filename:result},function(image){
+			    		Canvas.sketch.actions=image.data;
+			    		Canvas.redraw();
+			    	});
+			    });
+		    };
+
+		
+		    function DialogController($scope, $mdDialog) {
+		    	var $self=this;
+		    	$self.images = Image.query({},
+		    		function(d) {
+	    				$self.disabled=d.length==0;
+						$self.image = d[0];
+					});
+		    	$self.image=undefined;
+		    	$self.disabled=true;
+		    	
+		    	$self.cancel = function() {
+		          $mdDialog.cancel();
+		        };
+
+		        $self.ok = function() {
+		          $mdDialog.hide($self.image);
+		        };
+		    }
 	}
 });
