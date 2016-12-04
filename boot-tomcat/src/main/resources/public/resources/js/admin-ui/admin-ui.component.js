@@ -4,8 +4,9 @@ angular.module('adminUi').component('adminUi', {
 	controller : function(User,$mdToast) {
 		$self = this;
 		$self.users = User.query();
-		$self.newUser = undefined;
+		$self.newUser = {active:true};
 		$self.createUser = function() {
+			$self.newUser.rolesWanted=["ROLE_USER"];
 			var fail = function(failMessage){
 				$mdToast.show($mdToast.simple()
 						.textContent(failMessage)
@@ -19,7 +20,7 @@ angular.module('adminUi').component('adminUi', {
 				function(){
 					$mdToast.show($mdToast.simple().textContent('Success!').position('top'))
 					$self.users.push(User.get({username:$self.newUser.username}));
-					$self.newUser=undefined;
+					$self.newUser = {active:true};
 				},function(resp){
 					if(resp.status==409){
 						fail('User already exists');

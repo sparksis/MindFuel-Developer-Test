@@ -46,7 +46,7 @@ public class UserResource {
 		public org.springframework.security.core.userdetails.User toSpringUser() {
 			List<GrantedAuthority> authorities = getRolesWanted().stream().map(it->new SimpleGrantedAuthority(it)).collect(Collectors.toList());
 			org.springframework.security.core.userdetails.User u;
-			u = new org.springframework.security.core.userdetails.User(this.getUsername(), this.getPassword(),authorities);
+			u = new org.springframework.security.core.userdetails.User(this.getUsername(), this.getPassword(),this.isActive(),true,true,true,authorities);
 			return u;
 		}
 	}
