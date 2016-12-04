@@ -1,4 +1,6 @@
-image: maven:3-jdk-8
+job:
+  tags:
+    - colton
 
 build:
   script: "mvn install -B"
