@@ -65,7 +65,8 @@ md-input-container {
 
 #toast-anchor {
 	position: absolute;
-	margin-bottom:35px;
-	bottom: 0px;
+	margin-top:35px;
+	top: 0px;
 	width: 100%;
+	z-index: 80;
 }

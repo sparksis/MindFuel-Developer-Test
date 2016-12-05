@@ -8,10 +8,10 @@ angular.module('adminUi').component('adminUi', {
 		
 		$self.saveUser = function(user){
 			user.$save(function(){
-				$mdToast.show($mdToast.simple().textContent('Success!').position('top'));
+				$mdToast.show($mdToast.simple().textContent('Success!').position('top').parent(document.getElementById('toast-anchor')));
 				user.$get();
 			},function(resp){
-				$mdToast.show($mdToast.simple().textContent('Unable to save user at this time').position('top'))
+				$mdToast.show($mdToast.simple().textContent('Unable to save user at this time').position('top').parent(document.getElementById('toast-anchor')))
 			});
 		};
 		
@@ -29,7 +29,7 @@ angular.module('adminUi').component('adminUi', {
 			User.create(
 				$self.newUser,
 				function(){
-					$mdToast.show($mdToast.simple().textContent('Success!').position('top'))
+					$mdToast.show($mdToast.simple().textContent('Success!').position('top').parent(document.getElementById('toast-anchor')))
 					$self.users.push(User.get({username:$self.newUser.username}));
 					$self.newUser = {active:true};
 				},function(resp){
