@@ -1,8 +1,12 @@
 package ca.mindfuel.test.colton.model;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -23,6 +27,11 @@ public class User implements IdentifiableEntity<String> {
 
 	@Column(name = "ENABLED", nullable = false)
 	private boolean active;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "user")
+	private List<Authorities> authorities;
+	
 	public User() {
 	}
 
@@ -35,6 +44,7 @@ public class User implements IdentifiableEntity<String> {
 		this.username = user.username;
 		this.password = user.password;
 		this.active = user.active;
+		this.getAuthorities().addAll(user.getAuthorities());
 	}
 
 	@Override
@@ -65,6 +75,13 @@ public class User implements IdentifiableEntity<String> {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	
+	public List<Authorities> getAuthorities() {
+		if(authorities==null){
+			authorities = new LinkedList<>();
+		}
+		return authorities;
 	}
 
 }

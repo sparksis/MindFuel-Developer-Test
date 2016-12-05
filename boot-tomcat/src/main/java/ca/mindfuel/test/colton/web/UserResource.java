@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.WebApplicationContext;
 
+import ca.mindfuel.test.colton.model.Authorities;
 import ca.mindfuel.test.colton.model.User;
 import ca.mindfuel.test.colton.service.UserRepository;
 
@@ -102,6 +103,10 @@ public class UserResource {
 
 		Optional<User> dbUser = repository.selectById(username);
 		if (dbUser.isPresent()) {
+			
+			// hacky work around caused by building ontop of spring's JDBC security rather than properly abstracting
+			user.getRolesWanted().addAll(dbUser.get().getAuthorities().stream().map(Authorities::getAuthority).collect(Collectors.toList()));
+			
 			if (user.getPassword() == null || user.getPassword().trim().equals("")) {
 				user.setPassword(dbUser.get().getPassword());
 			}
