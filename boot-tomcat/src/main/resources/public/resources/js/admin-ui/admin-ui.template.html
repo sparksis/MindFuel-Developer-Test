@@ -28,10 +28,10 @@
 					</td>
 					<td>
 						<md-input-container> <input
-							ng-model="user.active" type="checkbox"> </md-input-container>
+							ng-model="user.active" type="checkbox" aria-label="active"> </md-input-container>
 					</td>
 					<td> 
-						<md-button class="md-accent md-raised" ng-click="user.$save()" href="#">Save</md-button>
+						<md-button class="md-accent md-raised" ng-click="admin.saveUser(user)" href="#">Save</md-button>
 					</td>
 				</tr>
 			</tbody>
@@ -47,7 +47,7 @@
 					</td>
 					<td>
 						<md-input-container> <input
-							ng-model="admin.newUser.active" type="checkbox"> </md-input-container>
+							ng-model="admin.newUser.active" type="checkbox" aria-label="active"> </md-input-container>
 					</td>
 					<td>
 						<md-button class="md-accent md-raised" ng-click="admin.createUser()" href="#">Create</md-button>

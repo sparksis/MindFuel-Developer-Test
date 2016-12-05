@@ -5,12 +5,23 @@ angular.module('adminUi').component('adminUi', {
 		$self = this;
 		$self.users = User.query();
 		$self.newUser = {active:true};
+		
+		$self.saveUser = function(user){
+			user.$save(function(){
+				$mdToast.show($mdToast.simple().textContent('Success!').position('top'));
+				user.$get();
+			},function(resp){
+				$mdToast.show($mdToast.simple().textContent('Unable to save user at this time').position('top'))
+			});
+		};
+		
 		$self.createUser = function() {
 			$self.newUser.rolesWanted=["ROLE_USER"];
 			var fail = function(failMessage){
 				$mdToast.show($mdToast.simple()
 						.textContent(failMessage)
 						.highlightClass('md-warn')
+						.position('top')
 						.parent(document.getElementById('toast-anchor'))
 						);
 			}
