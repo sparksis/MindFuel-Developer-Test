@@ -96,6 +96,25 @@ public class UserResourceTest {
 		ResponseEntity<User> user = this.restTemplate.getForEntity("/rest/users/testUserNotFound", User.class);
 		assertThat(user.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
 	}
+	
+	@Test
+	public void testCreateUserNoUsername(){
+		UserWrapper user = buildTestUser();
+		user.setUsername(null);
+
+		ResponseEntity<Void> body = this.restTemplate.postForEntity("/rest/users", user, Void.class);
+		assertThat(body.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+	}
+	
+	@Test
+	public void testCreateUserNoPassword(){
+		UserWrapper user = buildTestUser();
+		user.setUsername("testCreateUserNoPassword");
+		user.setPassword(null);
+
+		ResponseEntity<Void> body = this.restTemplate.postForEntity("/rest/users", user, Void.class);
+		assertThat(body.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+	}
 
 	@Test
 	public void testInactivateUser() {

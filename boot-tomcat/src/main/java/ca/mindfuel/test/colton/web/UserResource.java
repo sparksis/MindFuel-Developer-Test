@@ -103,10 +103,12 @@ public class UserResource {
 
 		Optional<User> dbUser = repository.selectById(username);
 		if (dbUser.isPresent()) {
-			
-			// hacky work around caused by building ontop of spring's JDBC security rather than properly abstracting
-			user.getRolesWanted().addAll(dbUser.get().getAuthorities().stream().map(Authorities::getAuthority).collect(Collectors.toList()));
-			
+
+			// hacky work around caused by building ontop of spring's JDBC
+			// security rather than properly abstracting
+			user.getRolesWanted().addAll(
+					dbUser.get().getAuthorities().stream().map(Authorities::getAuthority).collect(Collectors.toList()));
+
 			if (user.getPassword() == null || user.getPassword().trim().equals("")) {
 				user.setPassword(dbUser.get().getPassword());
 			}
@@ -119,13 +121,15 @@ public class UserResource {
 
 	@RequestMapping(path = "/rest/users", method = RequestMethod.POST)
 	public ResponseEntity<Void> save(@RequestBody UserWrapper user) {
+		if (user.getUsername() == null || user.getUsername ().trim().equals("")) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		if (user.getPassword() == null || user.getPassword().trim().equals("")) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 		Optional<User> dbUser = repository.selectById(user.getUsername());
 		if (dbUser.isPresent()) {
 			return new ResponseEntity<>(HttpStatus.CONFLICT);
-		}
-
-		if (user.getPassword() == null || user.getPassword().trim().equals("")) {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
 		manager.createUser(user.toSpringUser());
