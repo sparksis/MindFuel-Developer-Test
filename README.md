@@ -1,6 +1,6 @@
 # Requirements
 
-The following is an annotated of the requirements to assist the grader in quickly identifying major functionality missed.  See also requirements.pdf for the original requirements of this project.
+The following is an annotated version of the requirements to assist the grader in quickly identifying major functionality missed.  See also requirements.pdf for the original requirements of this project.
 
 ## Working 
 
