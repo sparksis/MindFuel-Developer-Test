@@ -105,6 +105,8 @@ This model also has the added benefit of ensuring that your team is able to alwa
 
 ## Jenkins
 
+The build toolchain has been taken offline as this project is no longer being supported or reviewed 
+
 [![Build Status](http://pi-jenkins.sparksis.com/buildStatus/icon?job=MindFuel Test)](http://pi-jenkins.sparksis.com/job/MindFuel Test)
  
 ## GitLab pipeline
