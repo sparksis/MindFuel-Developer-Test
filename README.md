@@ -1,5 +1,7 @@
 # Requirements
 
+The following is an annotated of the requirements to assist the grader in quickly identifying major functionality missed.  See also requirements.pdf for the original requirements of this project.
+
 ## Working 
 
 * Your code will be responsible for setting up the database schema.
