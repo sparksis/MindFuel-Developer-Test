@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: MindFuel-Developer-Test
+  description: "This document outlines the requirements for a web application featuring a drawing canvas with user management, H2DB for schema, Spring Boot backend, AngularJS 1.5.2 frontend, and specific functionalities like saving/loading drawings, undo/redo, and a color palette."
+  annotations:
+    github.com/project-slug: sparksis/MindFuel-Developer-Test
+spec:
+  type: service
+  lifecycle: experimental
+  owner: sparksis
